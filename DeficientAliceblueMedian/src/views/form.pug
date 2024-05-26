@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title #{pageTitle}
+    title Update User
     link(rel="stylesheet", href="/css/formStyles.css")
     link(rel="stylesheet", href="/css/layout.css")
     script(src="/js/layout.js" defer)
@@ -9,8 +9,8 @@ html
   body
     include layout.pug
     if user
-      h1 Update required values
-      form(action=`/users/${user._id}?_method=PUT` method="POST" enctype="multipart/form-data" id="mainForm")
+      h1 Update User Details
+      form(action=`/users/${user._id}?_method=PUT` method="POST" enctype="multipart/form-data" id="updateForm")
         div
           label(for="fullName") Full Name:
           input(type="text" id="fullName" name="fullName" placeholder="Please enter your full name" value=user.fullName)
@@ -42,7 +42,8 @@ html
             option(value="country5" selected=user.country==="country5") Country 5
           span.error(id="countryError")
         div
-          label(for="passportImage") Passport Image:
+          label(for="passportImage") Current Passport Image:
+          img(src=`../uploads/${user.imageUrl}`, alt="Passport Image")
           input(type="file" id="passportImage" name="passportImage" accept="image/png, image/jpeg")
           span.error(id="passportImageError")
         div

@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("mainForm");
-  const submitButton = document.getElementById("submitButton");
+  const submitButton =
+    document.getElementById("submitButton") ||
+    document.getElementById("updateButton");
 
   const fullName = document.getElementById("fullName");
   const email = document.getElementById("email");
@@ -95,6 +97,8 @@ document.addEventListener("DOMContentLoaded", function () {
   gender.addEventListener("change", () => validateField("gender"));
   country.addEventListener("change", () => validateField("country"));
   passportImage.addEventListener("change", () =>
-    validateField("passportImage"),
+    validateField("passportImage")
   );
+
+  checkFormValidity();
 });
