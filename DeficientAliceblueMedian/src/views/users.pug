@@ -1,0 +1,31 @@
+doctype html
+html
+    head    
+        title Users List
+        link(rel="stylesheet" href="/css/userListStyles.css")
+        link(rel="stylesheet", href="/css/layout.css")
+        script(src="/js/layout.js" defer)
+    body
+        include layout.pug
+        table
+            thead 
+                tr
+                    th
+                    th Full Name 
+                    th Email
+                    th Date of Birth
+                    th Gender
+                    th Country
+            tbody
+                each user in users 
+                    tr
+                        td
+                            form(action=`/users/${user._id}?_method=DELETE` method="POST" onsubmit="return confirm('Are you sure you want to delete this item?');")
+                                button(type="submit")
+                                    img(src="https://images.vexels.com/media/users/3/223479/isolated/preview/8ecc75c9d0cf6d942cce96e196d4953f-trash-bin-icon-flat-by-vexels.png" alt="Bin Icon" width=25)
+                        td
+                            a(href=`/users/${user._id}/edit`)= user.fullName
+                        td= user.email
+                        td= new Date(user.dob).toLocaleDateString()
+                        td= user.gender
+                        td= user.country

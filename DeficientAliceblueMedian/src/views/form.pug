@@ -1,0 +1,88 @@
+doctype html
+html
+  head
+    title #{pageTitle}
+    link(rel="stylesheet", href="/css/formStyles.css")
+    link(rel="stylesheet", href="/css/layout.css")
+    script(src="/js/layout.js" defer)
+    script(src="/js/form.js" defer)
+  body
+    include layout.pug
+    if user
+      h1 Update required values
+      form(action=`/users/${user._id}?_method=PUT` method="POST" enctype="multipart/form-data" id="mainForm")
+        div
+          label(for="fullName") Full Name:
+          input(type="text" id="fullName" name="fullName" placeholder="Please enter your full name" value=user.fullName)
+          span.error(id="fullNameError")
+        div
+          label(for="email") Email:
+          input(type="email" id="email" name="email" placeholder="Please enter your email" value=user.email)
+          span.error(id="emailError")
+        div
+          label(for="dob") Date of Birth:
+          input(type="date" id="dob" name="dob" placeholder="Please enter your date of birth" value=user.dob)
+          span.error(id="dobError")
+        div
+          label(for="gender") Gender:
+          select(id="gender" name="gender")
+            option(value="" disabled) Select Gender
+            option(value="male" selected=user.gender==="male") Male
+            option(value="female" selected=user.gender==="female") Female
+            option(value="other" selected=user.gender==="other") Other
+          span.error(id="genderError")
+        div
+          label(for="country") Country:
+          select(id="country" name="country")
+            option(value="" disabled) Select Country
+            option(value="country1" selected=user.country==="country1") Country 1
+            option(value="country2" selected=user.country==="country2") Country 2
+            option(value="country3" selected=user.country==="country3") Country 3
+            option(value="country4" selected=user.country==="country4") Country 4
+            option(value="country5" selected=user.country==="country5") Country 5
+          span.error(id="countryError")
+        div
+          label(for="passportImage") Passport Image:
+          input(type="file" id="passportImage" name="passportImage" accept="image/png, image/jpeg")
+          span.error(id="passportImageError")
+        div
+          button(type="submit" id="updateButton") Update
+    else
+      h1 Please fill in the details
+      form(action="/submit" method="POST" enctype="multipart/form-data" id="mainForm")
+        div
+          label(for="fullName") Full Name:
+          input(type="text" id="fullName" name="fullName" placeholder="Please enter your full name")
+          span.error(id="fullNameError")
+        div
+          label(for="email") Email:
+          input(type="email" id="email" name="email" placeholder="Please enter your email")
+          span.error(id="emailError")
+        div
+          label(for="dob") Date of Birth:
+          input(type="date" id="dob" name="dob" placeholder="Please enter your date of birth")
+          span.error(id="dobError")
+        div
+          label(for="gender") Gender:
+          select(id="gender" name="gender")
+            option(value="" disabled selected) Select Gender
+            option(value="male") Male
+            option(value="female") Female
+            option(value="other") Other
+          span.error(id="genderError")
+        div
+          label(for="country") Country:
+          select(id="country" name="country")
+            option(value="" disabled selected) Select Country
+            option(value="country1") Country 1
+            option(value="country2") Country 2
+            option(value="country3") Country 3
+            option(value="country4") Country 4
+            option(value="country5") Country 5
+          span.error(id="countryError")
+        div
+          label(for="passportImage") Passport Image:
+          input(type="file" id="passportImage" name="passportImage" accept="image/png, image/jpeg")
+          span.error(id="passportImageError")
+        div
+          button(type="submit" id="submitButton") Submit

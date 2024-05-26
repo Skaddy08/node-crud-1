@@ -1,0 +1,55 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0px;
+}
+
+body{
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: black;
+  margin: 0;
+  padding: 0
+}
+
+form{
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+h1{
+  text-align: center;
+  padding: 20px 0;
+  color: black;
+  margin-bottom: 3rem;
+}
+
+div{
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+}
+
+button {
+  padding: 10px;
+  background-color: #555;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: #444;
+}
+
+.error{
+  color: red;
+}
